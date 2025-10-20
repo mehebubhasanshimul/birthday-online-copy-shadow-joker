@@ -68,16 +68,14 @@
         .certificate-card {
             width: 100%;
             max-width: 600px; /* ছবির প্রকৃত প্রস্থের সাথে মিলিয়ে */
-            aspect-ratio: 0.707; /* A4 অনুপাত, ছবির জন্য আদর্শ */
+            aspect-ratio: 0.707; 
             position: relative;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             padding: 0;
             color: #000;
             background-repeat: no-repeat;
             background-position: center center;
-            background-size: contain; /* ছবি পুরো কন্টেইনারে দেখা যাবে */
-            
-            /* **১০০% অপাসিটি ব্যাকগ্রাউন্ড ছবি** */
+            background-size: contain; 
             background-image: url('20251020_161606.jpg'); 
             background-color: transparent;
             background-blend-mode: normal; 
@@ -87,7 +85,7 @@
         .overlay-text {
             position: absolute;
             font-family: 'Noto Sans Bengali', Arial, sans-serif;
-            font-size: 11.5px; /* ফন্ট সাইজ ছবির টেক্সটের সাথে মিলিয়ে সেট করা হয়েছে */
+            font-size: 11.5px; 
             font-weight: 500;
             color: #000;
             white-space: nowrap;
@@ -100,51 +98,56 @@
             color: #000;
         }
         .union-text {
-            font-size: 10px; /* ইউনিয়ন টেক্সট আরো ছোট */
+            font-size: 10px; 
             font-weight: 600;
             letter-spacing: 0.5px;
             color: #000;
         }
-/* টেক্সট পজিশন (Absolute Positioning) */
-/* **নতুন, টিউন করা মান** */
+        /* রেজিষ্ট্রেশন নাম্বার স্টাইল */
+        .reg-num-text {
+            font-size: 14px; 
+            font-weight: 700;
+            text-align: center;
+            color: #000;
+        }
 
-/* ইউনিয়ন পরিষদ (Union Parishad) */
-#unionDisplay { top: 22%; left: 33%; width: 35%; text-align: center; }
+        /* টেক্সট পজিশন (Absolute Positioning) */
+        
+        /* ইউনিয়ন পরিষদ (Union Parishad) */
+        #unionDisplay { top: 21%; left: 33%; width: 35%; text-align: center; }
 
-/* নাম (বাংলা) */
-#userNameBn { top: 40.3%; left: 14.5%; } 
-/* Name (English) */
-#userNameEn { top: 40.3%; left: 51%; } 
+        /* **নতুন: রেজিষ্ট্রেশন নাম্বার** */
+        #regNumDisplay { 
+            top: 34.5%; 
+            left: 36%; 
+            width: 28%; 
+            text-align: center; 
+        }
 
-/* মাতার নাম (বাংলা) - ছবির "মাতা" ফিল্ডটি "নাম" ফিল্ডের ঠিক নিচে আছে */
-#motherNameBn { top: 42.5%; left: 14.5%; } 
-/* Mother (English) */
-#motherNameEn { top: 42.5%; left: 51%; }
+        /* নাম (বাংলা) */
+        #userNameBn { top: 38.3%; left: 14.5%; } 
+        /* Name (English) */
+        #userNameEn { top: 38.3%; left: 51%; } 
 
-/* পিতার নাম (বাংলা) - ছবির "পিতা" ফিল্ডটি "মাতার জাতীয়তা" ফিল্ডের নিচে আছে */
-#fatherNameBn { top: 52%; left: 14.5%; } 
-/* Father (English) */
-#fatherNameEn { top: 52%; left: 51%; }
+        /* মাতার নাম (বাংলা) */
+        #motherNameBn { top: 41.5%; left: 14.5%; } 
+        /* Mother (English) */
+        #motherNameEn { top: 41.5%; left: 51%; }
 
-/* স্থায়ী ঠিকানা (বাংলা) */
-#addressBn { top: 78%; left: 14.5%; } 
-/* Permanent Address (English) */
-#addressEn { top: 78%; left: 51%; }
+        /* পিতার নাম (বাংলা) */
+        #fatherNameBn { top: 48%; left: 14.5%; } 
+        /* Father (English) */
+        #fatherNameEn { top: 48%; left: 51%; }
 
-/* গ্রাম ও জন্মস্থান (যদি যোগ করতে চান) */
-#villagePlaceOfBirthBn { top: 53.5%; left: 14.5%; } 
-#villagePlaceOfBirthEn { top: 53.5%; left: 91%; }
+        /* স্থায়ী ঠিকানা (বাংলা) */
+        #addressBn { top: 61%; left: 14.5%; } 
+        /* Permanent Address (English) */
+        #addressEn { top: 61%; left: 51%; }
 
-/* ক্রেডিট SHADOW JOKER - এটি ছবির সীল ও স্বাক্ষরের নীচে বসবে */
-.certificate-card > div:last-child { 
-    bottom: 12%; 
-    right: 5%; 
-    font-size: 8px; 
-    color: #333; 
-    font-family: Arial, sans-serif; 
-    opacity: 0.8;
-}
-
+        /* গ্রাম/জন্মস্থান (যদি যোগ করতে চান) */
+        #villagePlaceOfBirthBn { top: 53.5%; left: 14.5%; } 
+        #villagePlaceOfBirthEn { top: 53.5%; left: 51%; }
+        
         /* বাটন স্টাইল */
         .action-buttons { margin-top: 20px; }
         .action-buttons button {
@@ -174,6 +177,12 @@
         <div class="input-form-panel">
             <h2>প্রয়োজনীয় তথ্য ইনপুট</h2>
             <form id="certificateForm">
+                
+                <div class="input-group">
+                    <label for="regNumEnInput">নতুন রেজিষ্ট্রেশন নাম্বার (ইংরেজি):</label>
+                    <input type="text" id="regNumEnInput" value="19951010123456789" required>
+                </div>
+                
                 <div class="input-group"><label for="unionInput">ইউনিয়ন (শুধু ইংরেজিতে):</label><input type="text" id="unionInput" value="MOGRAHAT UNION PARISHAD" required></div>
                 <div class="input-group"><label for="userNameBnInput">নিজের নাম (বাংলা):</label><input type="text" id="userNameBnInput" value="অনিমেষ রায়" required></div>
                 <div class="input-group"><label for="userNameEnInput">নিজের নাম (ইংরেজি):</label><input type="text" id="userNameEnInput" value="ANIMESH ROY" required></div>
@@ -192,6 +201,8 @@
             <div id="certificateToDownload" class="certificate-card">
                 <div id="unionDisplay" class="overlay-text union-text"></div>
                 
+                <div id="regNumDisplay" class="overlay-text reg-num-text"></div>
+
                 <div id="userNameBn" class="overlay-text"></div>
                 <div id="userNameEn" class="overlay-text en"></div>
 
@@ -227,6 +238,9 @@
             
             // প্রাথমিক ডেটা প্রদর্শন ফাংশন
             function updateDisplay() {
+                // **নতুন: রেজিষ্ট্রেশন নাম্বার**
+                document.getElementById('regNumDisplay').textContent = document.getElementById('regNumEnInput').value;
+                
                 // ইউনিয়ন
                 document.getElementById('unionDisplay').textContent = document.getElementById('unionInput').value;
 
@@ -264,7 +278,7 @@
                     scale: 2, // হাই রেজোলিউশনের জন্য
                     useCORS: true, 
                     allowTaint: true,
-                    backgroundColor: null // ব্যাকগ্রাউন্ডকে স্বচ্ছ রাখবে যদি ছবির সমস্যা হয়
+                    backgroundColor: null 
                 }).then(canvas => {
                     const image = canvas.toDataURL("image/png");
                     const link = document.createElement('a');
@@ -283,5 +297,3 @@
     </script>
     </body>
 </html>
-
-
