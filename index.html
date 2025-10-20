@@ -78,7 +78,7 @@
             background-size: contain; /* ছবি পুরো কন্টেইনারে দেখা যাবে */
             
             /* **১০০% অপাসিটি ব্যাকগ্রাউন্ড ছবি** */
-            background-image: url('20251020_161606.jpg'); 
+            background-image: url('IMG_20251020_161707.jpg'); 
             background-color: transparent;
             background-blend-mode: normal; 
         }
@@ -105,32 +105,45 @@
             letter-spacing: 0.5px;
             color: #000;
         }
+/* টেক্সট পজিশন (Absolute Positioning) */
+/* **নতুন, টিউন করা মান** */
 
-        /* টেক্সট পজিশন (Absolute Positioning) */
-        /* এই মানগুলো ছবির রেজোলিউশনের উপর ভিত্তি করে সেট করা হয়েছে */
-        
-        /* ইউনিয়নের খালি জায়গা */
-        #unionDisplay { top: 29.5%; left: 35%; width: 30%; text-align: center; }
+/* ইউনিয়ন পরিষদ (Union Parishad) */
+#unionDisplay { top: 32%; left: 33%; width: 35%; text-align: center; }
 
-        /* নাম (বাংলা) */
-        #userNameBn { top: 37.7%; left: 19%; } 
-        /* Name (English) */
-        #userNameEn { top: 38.3%; left: 55%; } 
+/* নাম (বাংলা) */
+#userNameBn { top: 38.3%; left: 14.5%; } 
+/* Name (English) */
+#userNameEn { top: 38.3%; left: 51%; } 
 
-        /* পিতার নাম (বাংলা) */
-        #fatherNameBn { top: 48.7%; left: 19%; } 
-        /* Father (English) */
-        #fatherNameEn { top: 49.3%; left: 55%; }
+/* মাতার নাম (বাংলা) - ছবির "মাতা" ফিল্ডটি "নাম" ফিল্ডের ঠিক নিচে আছে */
+#motherNameBn { top: 41.5%; left: 14.5%; } 
+/* Mother (English) */
+#motherNameEn { top: 41.5%; left: 51%; }
 
-        /* মাতার নাম (বাংলা) */
-        #motherNameBn { top: 43.2%; left: 19%; } 
-        /* Mother (English) */
-        #motherNameEn { top: 43.8%; left: 55%; }
+/* পিতার নাম (বাংলা) - ছবির "পিতা" ফিল্ডটি "মাতার জাতীয়তা" ফিল্ডের নিচে আছে */
+#fatherNameBn { top: 48%; left: 14.5%; } 
+/* Father (English) */
+#fatherNameEn { top: 48%; left: 51%; }
 
-        /* স্থায়ী ঠিকানা (বাংলা) */
-        #addressBn { top: 59.7%; left: 19%; } 
-        /* Permanent Address (English) */
-        #addressEn { top: 60.3%; left: 55%; }
+/* স্থায়ী ঠিকানা (বাংলা) */
+#addressBn { top: 58%; left: 14.5%; } 
+/* Permanent Address (English) */
+#addressEn { top: 58%; left: 51%; }
+
+/* গ্রাম ও জন্মস্থান (যদি যোগ করতে চান) */
+#villagePlaceOfBirthBn { top: 53.5%; left: 14.5%; } 
+#villagePlaceOfBirthEn { top: 53.5%; left: 51%; }
+
+/* ক্রেডিট SHADOW JOKER - এটি ছবির সীল ও স্বাক্ষরের নীচে বসবে */
+.certificate-card > div:last-child { 
+    bottom: 12%; 
+    right: 5%; 
+    font-size: 8px; 
+    color: #333; 
+    font-family: Arial, sans-serif; 
+    opacity: 0.8;
+}
 
         /* বাটন স্টাইল */
         .action-buttons { margin-top: 20px; }
@@ -203,7 +216,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Digital Certificate Generator. Credit: SHADOW JOKER</p>
+        <p>&copy; 2024 Digital Certificate Generator. Credit: SHADOW JOKER</p>
     </footer>
 
     <script>
