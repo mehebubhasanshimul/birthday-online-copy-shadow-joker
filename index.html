@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ডিজিটাল সার্টিফিকেট জেনারেটর - SHADOW JOKER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <style>
+        /* ফন্ট ও বেসিক সেটআপ */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans Bengali', Arial, sans-serif;
+            background-color: #eef1f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        /* মূল কন্টেইনার */
+        .app-container {
+            display: flex;
+            gap: 30px;
+            width: 95%;
+            max-width: 1400px;
+            margin: 20px auto;
+        }
+
+        /* ইনপুট ফর্ম (বাম পাশ) */
+        .input-form-panel {
+            flex: 1;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .input-form-panel h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        /* সার্টিফিকেট প্রিভিউ (ডান পাশ) */
+        .preview-panel {
+            flex: 2;
+            padding: 20px;
+            background: #eef1f5;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .certificate-card {
+            width: 100%;
+            max-width: 750px;
+            aspect-ratio: 3 / 2;
+            position: relative;
+            border: 12px solid #0056b3;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            padding: 40px;
+            color: #000;
+            background-color: rgba(255, 255, 255, 0.8);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-blend-mode: overlay;
+            margin-bottom: 20px;
+            /* **এখানে সরাসরি ফোল্ডারের ছবির নাম ব্যবহার করা হয়েছে** */
+            background-image: url('20251020_161606.jpg'); 
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 15px;
+        }
+
+        .card-header h2 {
+            font-size: 1.8rem;
+            color: #0056b3;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .card-header h1 {
+            font-size: 2.5rem;
+            color: #000;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        /* তথ্য বিন্যাস */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .info-item.full-width {
+            grid-column: 1 / 3;
+        }
+
+        .label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 3px;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        .data {
+            font-size: 1.1rem;
+            color: #000;
+            line-height: 1.3;
+        }
+
+        .data-en {
+            font-family: Arial, sans-serif;
+            margin-top: 3px;
+            font-style: italic;
+            font-weight: 600;
+            color: #007bff;
+        }
+
+        /* বাটন স্টাইল */
+        .action-buttons button {
+            background: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+            margin: 5px;
+        }
+        .action-buttons button:hover {
+            background: #0056b3;
+        }
+        #downloadBtn {
+            background: #4CAF50;
+        }
+        #downloadBtn:hover {
+            background: #3e8e41;
+        }
+
+        /* ফুটার */
+        footer {
+            padding: 15px 0;
+            text-align: center;
+            background: #2c3e50;
+            color: #ecf0f1;
+            width: 100%;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        /* রেসপনসিভ ডিজাইন */
+        @media (max-width: 1024px) {
+            .app-container {
+                flex-direction: column;
+            }
+            .input-form-panel {
+                max-height: none;
+                overflow-y: visible;
+            }
+            .certificate-card {
+                aspect-ratio: unset;
+                height: auto;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-item.full-width {
+                grid-column: 1 / 2;
+            }
+        }
+    </style>
+    </head>
+<body>
+
+    <div class="app-container">
+        <div class="input-form-panel">
+            <h2>প্রয়োজনীয় তথ্য ইনপুট</h2>
+            <form id="certificateForm">
+                
+                <div class="input-group">
+                    <label for="unionEnInput">ইউনিয়ন (শুধুমাত্র ইংরেজিতে):</label>
+                    <input type="text" id="unionEnInput" value="MOGRAHAT UNION PARISHAD" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="userNameBnInput">নিজের নাম (বাংলা):</label>
+                    <input type="text" id="userNameBnInput" value="অনিমেষ রায়" required>
+                </div>
+                <div class="input-group">
+                    <label for="userNameEnInput">নিজের নাম (ইংরেজি):</label>
+                    <input type="text" id="userNameEnInput" value="ANIMESH ROY" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="fatherNameBnInput">পিতার নাম (বাংলা):</label>
+                    <input type="text" id="fatherNameBnInput" value="প্রভাত রঞ্জন রায়" required>
+                </div>
+                <div class="input-group">
+                    <label for="fatherNameEnInput">পিতার নাম (ইংরেজি):</label>
+                    <input type="text" id="fatherNameEnInput" value="PRABHAT RANJAN ROY" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="motherNameBnInput">মাতার নাম (বাংলা):</label>
+                    <input type="text" id="motherNameBnInput" value="শোভা রাণী রায়" required>
+                </div>
+                <div class="input-group">
+                    <label for="motherNameEnInput">মাতার নাম (ইংরেজি):</label>
+                    <input type="text" id="motherNameEnInput" value="SHOBHA RANI ROY" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="addressBnInput">স্থায়ী ঠিকানা (বাংলা):</label>
+                    <input type="text" id="addressBnInput" value="গ্রাম: মোগরাহাট, ডাকঘর: মোগরাহাট-৭৬৪৫, উপজেলা: কালীগঞ্জ, জেলা: ঝিনাইদহ" required>
+                </div>
+                <div class="input-group">
+                    <label for="addressEnInput">স্থায়ী ঠিকানা (ইংরেজি):</label>
+                    <input type="text" id="addressEnInput" value="Village: Mograhat, Post Office: Mograhat-7645, Upazila: Kaliganj, District: Jhenaidah" required>
+                </div>
+
+                <div class="action-buttons">
+                    <button type="submit">সার্টিফিকেট আপডেট করুন</button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="preview-panel">
+            <div id="certificateToDownload" class="certificate-card">
+                <header class="card-header">
+                    <h2 id="unionEnDisplay">MOGRAHAT UNION PARISHAD</h2>
+                    <h1>BIRTH CERTIFICATE</h1>
+                </header>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <p class="label">নাম (Name):</p>
+                        <p id="userNameBnDisplay" class="data"></p>
+                        <p id="userNameEnDisplay" class="data data-en"></p>
+                    </div>
+
+                    <div class="info-item">
+                        <p class="label">পিতার নাম (Father's Name):</p>
+                        <p id="fatherNameBnDisplay" class="data"></p>
+                        <p id="fatherNameEnDisplay" class="data data-en"></p>
+                    </div>
+
+                    <div class="info-item">
+                        <p class="label">মাতার নাম (Mother's Name):</p>
+                        <p id="motherNameBnDisplay" class="data"></p>
+                        <p id="motherNameEnDisplay" class="data data-en"></p>
+                    </div>
+
+                    <div class="info-item full-width">
+                        <p class="label">স্থায়ী ঠিকানা (Permanent Address):</p>
+                        <p id="addressBnDisplay" class="data"></p>
+                        <p id="addressEnDisplay" class="data data-en"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                 <button id="downloadBtn">ছবি ডাউনলোড করুন (PNG)</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Digital Certificate Generator. Credit: SHADOW JOKER</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('certificateForm');
+            const certificateCard = document.getElementById('certificateToDownload');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            // প্রাথমিক ডেটা প্রদর্শন ফাংশন
+            function updateDisplay() {
+                document.getElementById('unionEnDisplay').textContent = document.getElementById('unionEnInput').value;
+                document.getElementById('userNameBnDisplay').textContent = document.getElementById('userNameBnInput').value;
+                document.getElementById('userNameEnDisplay').textContent = document.getElementById('userNameEnInput').value;
+                document.getElementById('fatherNameBnDisplay').textContent = document.getElementById('fatherNameBnInput').value;
+                document.getElementById('fatherNameEnDisplay').textContent = document.getElementById('fatherNameEnInput').value;
+                document.getElementById('motherNameBnDisplay').textContent = document.getElementById('motherNameBnInput').value;
+                document.getElementById('motherNameEnDisplay').textContent = document.getElementById('motherNameEnInput').value;
+                document.getElementById('addressBnDisplay').textContent = document.getElementById('addressBnInput').value;
+                document.getElementById('addressEnDisplay').textContent = document.getElementById('addressEnInput').value;
+            }
+
+            // ফর্ম সাবমিট হ্যান্ডলার
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                updateDisplay();
+                alert('সার্টিফিকেট প্রিভিউ আপডেট করা হয়েছে!');
+            });
+            
+            // ডাউনলোড ফাংশন (html2canvas ব্যবহার করে)
+            downloadBtn.addEventListener('click', function() {
+                // ডাউনলোডের আগে বাটনটি লুকিয়ে রাখা (ছবির মধ্যে যাতে না আসে)
+                downloadBtn.style.display = 'none'; 
+                
+                // html2canvas দিয়ে HTML কন্টেন্টকে ক্যানভাসে রূপান্তর করা
+                html2canvas(certificateCard, { 
+                    scale: 2, 
+                    useCORS: true // ক্রস-অরিজিন ছবি (যেমন ফোল্ডারের ছবি) ব্যবহারের জন্য
+                }).then(canvas => {
+                    const image = canvas.toDataURL("image/png");
+                    const link = document.createElement('a');
+                    link.download = 'BirthCertificate_SHADOW_JOKER.png';
+                    link.href = image;
+                    link.click();
+                    
+                    // ডাউনলোডের পর বাটনটি আবার প্রদর্শন করা
+                    downloadBtn.style.display = 'inline-block';
+                });
+            });
+
+            // প্রাথমিক ডেটা লোড করা
+            updateDisplay();
+        });
+    </script>
+    </body>
+</html>
