@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ডিজিটাল সার্টিফিকেট জেনারেটর - SHADOW JOKER</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     
     <style>
         /* ফন্ট ও বেসিক সেটআপ */
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap'); /* সিগনেচার ফন্ট */
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Noto Sans Bengali', Arial, sans-serif;
@@ -67,7 +71,7 @@
 
         .certificate-card {
             width: 100%;
-            max-width: 600px; /* ছবির প্রকৃত প্রস্থের সাথে মিলিয়ে */
+            max-width: 600px; 
             aspect-ratio: 0.707; 
             position: relative;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -76,7 +80,7 @@
             background-repeat: no-repeat;
             background-position: center center;
             background-size: contain; 
-            background-image: url('20251020_161606.jpg'); 
+            background-image: url('20251020_161606.jpg'); /* আপনার নতুন ছবির নাম */
             background-color: transparent;
             background-blend-mode: normal; 
         }
@@ -85,7 +89,7 @@
         .overlay-text {
             position: absolute;
             font-family: 'Noto Sans Bengali', Arial, sans-serif;
-            font-size: 10.5px; 
+            font-size: 11px; /* ফন্ট সাইজ টিউন করা হলো */
             font-weight: 500;
             color: #000;
             white-space: nowrap;
@@ -94,7 +98,7 @@
         .overlay-text.en {
             font-family: Arial, sans-serif;
             font-weight: bold;
-            font-size: 9px;
+            font-size: 10px; /* ইংরেজি ফন্ট সাইজ টিউন করা হলো */
             color: #000;
         }
         .union-text {
@@ -103,7 +107,6 @@
             letter-spacing: 0.5px;
             color: #000;
         }
-        /* রেজিষ্ট্রেশন নাম্বার স্টাইল */
         .reg-num-text {
             font-size: 10px; 
             font-weight: 700;
@@ -111,42 +114,48 @@
             color: #000;
         }
 
-        /* টেক্সট পজিশন (Absolute Positioning) */
-        
-        /* ইউনিয়ন পরিষদ (Union Parishad) */
-        #unionDisplay { top: 21%; left: 33%; width: 35%; text-align: center; }
-
-        /* **নতুন: রেজিষ্ট্রেশন নাম্বার** */
-        #regNumDisplay { 
-            top: 31.5%; 
-            left: 45%; 
-            width: 28%; 
-            text-align: center; 
+        /* **SHADOW JOKER সিগনেচার স্টাইল** */
+        .signature-credit {
+            position: absolute;
+            bottom: 18%; /* ছবির নিচের সিগনেচার লাইনের উপরে */
+            right: 10%;
+            font-family: 'Sacramento', cursive; /* সিগনেচার ফন্ট */
+            font-size: 24px; 
+            color: #333;
+            opacity: 0.9;
         }
 
-        /* নাম (বাংলা) */
-        #userNameBn { top: 43.%; left: 30.5%; } 
-        /* Name (English) */
-        #userNameEn { top: 43.%; left: 60%; } 
 
-        /* মাতার নাম (বাংলা) */
-        #motherNameBn { top: 46.1%; left: 30.5%; } 
-        /* Mother (English) */
-        #motherNameEn { top: 46.1%; left: 60%; }
+        /* টেক্সট পজিশন (Absolute Positioning) - চূড়ান্ত টিউনিং */
+        
+        /* ইউনিয়ন পরিষদ (Union Parishad) */
+        #unionDisplay { top: 22.5%; left: 34%; width: 35%; text-align: center; }
 
-        /* পিতার নাম (বাংলা) */
-        #fatherNameBn { top: 53.5%; left: 30.5%; } 
-        /* Father (English) */
-        #fatherNameEn { top: 53.5%; left: 60%; }
+        /* রেজিষ্ট্রেশন নাম্বার */
+        #regNumDisplay { top: 31.7%; left: 45.5%; width: 28%; text-align: center; }
+        
+        /* জন্ম তারিখ */
+        #dobDisplay { top: 34.5%; left: 18%; }
+        #doiDisplay { top: 31.7%; left: 78%; }
 
-        /* স্থায়ী ঠিকানা (বাংলা) */
-        #addressBn { top: 63%; left: 30.5%; } 
-        /* Permanent Address (English) */
-        #addressEn { top: 63%; left: 80%; }
+        /* জন্ম তারিখ কথায় */
+        #dobWordDisplay { top: 38%; left: 14%; width: 30%; }
 
-        /* গ্রাম/জন্মস্থান (যদি যোগ করতে চান) */
-        #villagePlaceOfBirthBn { top: 53.5%; left: 14.5%; } 
-        #villagePlaceOfBirthEn { top: 53.5%; left: 51%; }
+        /* নাম */
+        #userNameBn { top: 43.%; left: 14.5%; } 
+        #userNameEn { top: 43.%; left: 51%; } 
+
+        /* মাতার নাম */
+        #motherNameBn { top: 46.5%; left: 14.5%; } 
+        #motherNameEn { top: 46.5%; left: 51%; }
+
+        /* পিতার নাম */
+        #fatherNameBn { top: 53.5%; left: 14.5%; } 
+        #fatherNameEn { top: 53.5%; left: 51%; }
+
+        /* স্থায়ী ঠিকানা */
+        #addressBn { top: 63%; left: 14.5%; } 
+        #addressEn { top: 63%; left: 51%; }
         
         /* বাটন স্টাইল */
         .action-buttons { margin-top: 20px; }
@@ -179,7 +188,22 @@
             <form id="certificateForm">
                 
                 <div class="input-group">
-                    <label for="regNumEnInput">নতুন রেজিষ্ট্রেশন নাম্বার (ইংরেজি):</label>
+                    <label for="dobInput">জন্ম তারিখ (DD/MM/YYYY):</label>
+                    <input type="text" id="dobInput" value="10/10/1995" required>
+                </div>
+                <div class="input-group">
+                    <label for="dobWordInput">জন্ম তারিখ কথায় (ইংরেজিতে):</label>
+                    <input type="text" id="dobWordInput" value="Tenth October Nineteen Ninety-Five" required>
+                </div>
+                <div class="input-group">
+                    <label for="doiInput">ইস্যু ডেট (Date of Issuance):</label>
+                    <input type="text" id="doiInput" value="21/10/2025" required>
+                </div>
+                
+                <hr style="margin: 15px 0;">
+
+                <div class="input-group">
+                    <label for="regNumEnInput">রেজিষ্ট্রেশন নাম্বার (ইংরেজি):</label>
                     <input type="text" id="regNumEnInput" value="19951010123456789" required>
                 </div>
                 
@@ -190,8 +214,8 @@
                 <div class="input-group"><label for="fatherNameEnInput">পিতার নাম (ইংরেজি):</label><input type="text" id="fatherNameEnInput" value="PRABHAT RANJAN ROY" required></div>
                 <div class="input-group"><label for="motherNameBnInput">মাতার নাম (বাংলা):</label><input type="text" id="motherNameBnInput" value="শোভা রাণী রায়" required></div>
                 <div class="input-group"><label for="motherNameEnInput">মাতার নাম (ইংরেজি):</label><input type="text" id="motherNameEnInput" value="SHOBHA RANI ROY" required></div>
-                <div class="input-group"><label for="addressBnInput">স্থায়ী ঠিকানা (বাংলা):</label><input type="text" id="addressBnInput" value=" মোগরাহাট, কালীগঞ্জ, ঝিনাইদহ" required></div>
-                <div class="input-group"><label for="addressEnInput">স্থায়ী ঠিকানা (ইংরেজি):</label><input type="text" id="addressEnInput" value=" Mograhat, Kaliganj, Jhenaidah" required></div>
+                <div class="input-group"><label for="addressBnInput">স্থায়ী ঠিকানা (বাংলা):</label><input type="text" id="addressBnInput" value="মোগরাহাট, কালীগঞ্জ, ঝিনাইদহ" required></div>
+                <div class="input-group"><label for="addressEnInput">স্থায়ী ঠিকানা (ইংরেজি):</label><input type="text" id="addressEnInput" value="Mograhat, Kaliganj, Jhenaidah" required></div>
 
                 <div class="action-buttons"><button type="submit">সার্টিফিকেট আপডেট করুন</button></div>
             </form>
@@ -199,8 +223,11 @@
 
         <div class="preview-panel">
             <div id="certificateToDownload" class="certificate-card">
-                <div id="unionDisplay" class="overlay-text union-text"></div>
+                <div id="dobDisplay" class="overlay-text"></div>
+                <div id="doiDisplay" class="overlay-text"></div>
+                <div id="dobWordDisplay" class="overlay-text en"></div>
                 
+                <div id="unionDisplay" class="overlay-text union-text"></div>
                 <div id="regNumDisplay" class="overlay-text reg-num-text"></div>
 
                 <div id="userNameBn" class="overlay-text"></div>
@@ -215,7 +242,7 @@
                 <div id="addressBn" class="overlay-text"></div>
                 <div id="addressEn" class="overlay-text en"></div>
 
-                <div style="position: absolute; bottom: 20%; right: 5%; font-size: 8px; color: #foff; font-family: Arial, sans-serif; opacity: 0.8;">
+                <div id="shadowJokerSignature" class="signature-credit">
                      SHADOW JOKER
                 </div>
             </div>
@@ -238,25 +265,21 @@
             
             // প্রাথমিক ডেটা প্রদর্শন ফাংশন
             function updateDisplay() {
-                // **নতুন: রেজিষ্ট্রেশন নাম্বার**
+                // নতুন ইনপুট
+                document.getElementById('dobDisplay').textContent = document.getElementById('dobInput').value;
+                document.getElementById('doiDisplay').textContent = document.getElementById('doiInput').value;
+                document.getElementById('dobWordDisplay').textContent = document.getElementById('dobWordInput').value;
+
                 document.getElementById('regNumDisplay').textContent = document.getElementById('regNumEnInput').value;
                 
-                // ইউনিয়ন
+                // পুরনো ইনপুট
                 document.getElementById('unionDisplay').textContent = document.getElementById('unionInput').value;
-
-                // নাম
                 document.getElementById('userNameBn').textContent = document.getElementById('userNameBnInput').value;
                 document.getElementById('userNameEn').textContent = document.getElementById('userNameEnInput').value;
-
-                // পিতা
                 document.getElementById('fatherNameBn').textContent = document.getElementById('fatherNameBnInput').value;
                 document.getElementById('fatherNameEn').textContent = document.getElementById('fatherNameEnInput').value;
-
-                // মাতা
                 document.getElementById('motherNameBn').textContent = document.getElementById('motherNameBnInput').value;
                 document.getElementById('motherNameEn').textContent = document.getElementById('motherNameEnInput').value;
-
-                // ঠিকানা
                 document.getElementById('addressBn').textContent = document.getElementById('addressBnInput').value;
                 document.getElementById('addressEn').textContent = document.getElementById('addressEnInput').value;
             }
@@ -265,17 +288,15 @@
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 updateDisplay();
-                alert('সার্টিফিকেট প্রিভিউ আপডেট করা হয়েছে!');
+                alert('সার্টিফিকেট প্রিভিউ আপডেট করা হয়েছে! \n\nডাউনলোড করার আগে টেক্সটগুলো ঠিক জায়গায় আছে কিনা, দেখে নিন।');
             });
             
             // ডাউনলোড ফাংশন (html2canvas ব্যবহার করে)
             downloadBtn.addEventListener('click', function() {
-                // ডাউনলোডের আগে বাটনটি লুকিয়ে রাখা (ছবির মধ্যে যাতে না আসে)
                 downloadBtn.style.display = 'none'; 
                 
-                // html2canvas দিয়ে HTML কন্টেন্টকে ক্যানভাসে রূপান্তর করা
                 html2canvas(certificateCard, { 
-                    scale: 2, // হাই রেজোলিউশনের জন্য
+                    scale: 2, 
                     useCORS: true, 
                     allowTaint: true,
                     backgroundColor: null 
@@ -286,7 +307,6 @@
                     link.href = image;
                     link.click();
                     
-                    // ডাউনলোডের পর বাটনটি আবার প্রদর্শন করা
                     downloadBtn.style.display = 'inline-block';
                 });
             });
@@ -297,9 +317,3 @@
     </script>
     </body>
 </html>
-
-
-
-
-
-
