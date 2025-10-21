@@ -129,7 +129,7 @@
             text-align: center;
             color: #000;
         }
-        /* নতুন পরিবর্তন: ঠিকানার গ্রাম/ভিলেজ অংশের জন্য ছোট ফন্ট সাইজ */
+        /* ঠিকানার গ্রাম/ভিলেজ অংশের জন্য ছোট ফন্ট সাইজ */
         .address-part {
             font-size: 7.px; /* গ্রাম টেক্সট সাইজ ছোটো */
             font-weight: 400;
@@ -168,19 +168,23 @@
 
         /* নাম */
         #userNameBn { top: 43.3%; left: 30%; } 
-        #userNameEn { top: 43.3%; left: 66%; } 
+        #userNameEn { top: 43.2%; left: 66.5%; } 
 
         /* মাতার নাম */
         #motherNameBn { top: 46.5%; left: 30%; } 
-        #motherNameEn { top: 46.5%; left: 66%; }
+        #motherNameEn { top: 46.5%; left: 66.5%; }
 
         /* পিতার নাম */
         #fatherNameBn { top: 53.5%; left: 30%; } 
-        #fatherNameEn { top: 53.5%; left: 66%; }
+        #fatherNameEn { top: 53.5%; left: 66.5%; }
 
         /* স্থায়ী ঠিকানা */
         #addressBn { top: 66%; left: 29%; } 
         #addressEn { top: 66%; left: 68%; }
+
+        /* ** নতুন জন্মস্থান (District/Division) ** */
+        /* এই টেক্সটগুলি প্রদর্শনের জন্য আপনাকে সার্টিফিকেট টেমপ্লেটে পজিশন সেট করতে হবে। 
+           এখানে শুধু ইনপুট নেওয়া হলো, ডিসপ্লে কোড যুক্ত করা হয়নি। */
         
         /* বাটন স্টাইল */
         .action-buttons { margin-top: 20px; }
@@ -237,14 +241,38 @@
                 </div>
                 
                 <div class="input-group"><label for="unionInput">ইউনিয়ন (শুধু ইংরেজিতে):</label><input type="text" id="unionInput" value="MOGRAHAT UNION PARISHAD" required></div>
+                
+                <hr style="margin: 15px 0;">
+                
+                <h3>জন্মস্থান (Place of Birth)</h3>
+                <div class="input-group">
+                    <label for="birthDistrictBnInput">জন্মস্থান জেলা (বাংলা):</label>
+                    <input type="text" id="birthDistrictBnInput" value="ঝিনাইদহ" required>
+                </div>
+                <div class="input-group">
+                    <label for="birthDivisionBnInput">জন্মস্থান বিভাগ (বাংলা):</label>
+                    <input type="text" id="birthDivisionBnInput" value="খুলনা" required>
+                </div>
+                <div class="input-group">
+                    <label for="birthDistrictEnInput">জন্মস্থান জেলা (ইংরেজি):</label>
+                    <input type="text" id="birthDistrictEnInput" value="Jhenaidah" required>
+                </div>
+                <div class="input-group">
+                    <label for="birthDivisionEnInput">জন্মস্থান বিভাগ (ইংরেজি):</label>
+                    <input type="text" id="birthDivisionEnInput" value="Khulna" required>
+                </div>
+
+                <hr style="margin: 15px 0;">
+
                 <div class="input-group"><label for="userNameBnInput">নিজের নাম (বাংলা):</label><input type="text" id="userNameBnInput" value="অনিমেষ রায়" required></div>
                 <div class="input-group"><label for="userNameEnInput">নিজের নাম (ইংরেজি):</label><input type="text" id="userNameEnInput" value="ANIMESH ROY" required></div>
                 <div class="input-group"><label for="fatherNameBnInput">পিতার নাম (বাংলা):</label><input type="text" id="fatherNameBnInput" value="প্রভাত রঞ্জন রায়" required></div>
                 <div class="input-group"><label for="fatherNameEnInput">পিতার নাম (ইংরেজি):</label><input type="text" id="fatherNameEnInput" value="PRABHAT RANJAN ROY" required></div>
                 <div class="input-group"><label for="motherNameBnInput">মাতার নাম (বাংলা):</label><input type="text" id="motherNameBnInput" value="শোভা রাণী রায়" required></div>
                 <div class="input-group"><label for="motherNameEnInput">মাতার নাম (ইংরেজি):</label><input type="text" id="motherNameEnInput" value="SHOBHA RANI ROY" required></div>
-                <div class="input-group"><label for="addressBnInput">স্থায়ী ঠিকানা (বাংলা) [গ্রাম, থানা, জেলা]:</label><input type="text" id="addressBnInput" value="মোগরাহাট, কালীগঞ্জ, ঝিনাইদহ" required></div>
-                <div class="input-group"><label for="addressEnInput">স্থায়ী ঠিকানা (ইংরেজি) [Village, Thana, District]:</label><input type="text" id="addressEnInput" value="Mograhat, Kaliganj, Jhenaidah" required></div>
+                
+                <div class="input-group"><label for="addressBnInput">স্থায়ী ঠিকানা (বাংলা) [গ্রাম, থানা, জেলা, বিভাগ]:</label><input type="text" id="addressBnInput" value="মোগরাহাট, কালীগঞ্জ, ঝিনাইদহ, খুলনা" required></div>
+                <div class="input-group"><label for="addressEnInput">স্থায়ী ঠিকানা (ইংরেজি) [Village, Thana, District, Division]:</label><input type="text" id="addressEnInput" value="Mograhat, Kaliganj, Jhenaidah, Khulna" required></div>
 
                 <div class="action-buttons"><button type="submit">সার্টিফিকেট আপডেট করুন</button></div>
             </form>
@@ -268,7 +296,10 @@
                 <div id="motherNameBn" class="overlay-text"></div>
                 <div id="motherNameEn" class="overlay-text en"></div>
 
-                <div id="addressBn" class="overlay-text address-part"></div> <div id="addressEn" class="overlay-text address-part en"></div> <div id="shadowJokerSignature" class="signature-credit">
+                <div id="addressBn" class="overlay-text address-part"></div> 
+                <div id="addressEn" class="overlay-text address-part en"></div> 
+                
+                <div id="shadowJokerSignature" class="signature-credit">
                      SHADOW JOKER
                 </div>
             </div>
@@ -291,23 +322,37 @@
             
             // প্রাথমিক ডেটা প্রদর্শন ফাংশন
             function updateDisplay() {
-                // নতুন ইনপুট
+                // জন্মতারিখ ও রেজিষ্ট্রেশন
                 document.getElementById('dobDisplay').textContent = document.getElementById('dobInput').value;
                 document.getElementById('doiDisplay').textContent = document.getElementById('doiInput').value;
                 document.getElementById('dobWordDisplay').textContent = document.getElementById('dobWordInput').value;
-
                 document.getElementById('regNumDisplay').textContent = document.getElementById('regNumEnInput').value;
                 
-                // পুরনো ইনপুট
+                // ইউনিয়ন
                 document.getElementById('unionDisplay').textContent = document.getElementById('unionInput').value;
+                
+                // নাম
                 document.getElementById('userNameBn').textContent = document.getElementById('userNameBnInput').value;
                 document.getElementById('userNameEn').textContent = document.getElementById('userNameEnInput').value;
+                
+                // পিতা-মাতার নাম
                 document.getElementById('fatherNameBn').textContent = document.getElementById('fatherNameBnInput').value;
                 document.getElementById('fatherNameEn').textContent = document.getElementById('fatherNameEnInput').value;
                 document.getElementById('motherNameBn').textContent = document.getElementById('motherNameBnInput').value;
                 document.getElementById('motherNameEn').textContent = document.getElementById('motherNameEnInput').value;
+                
+                // স্থায়ী ঠিকানা
                 document.getElementById('addressBn').textContent = document.getElementById('addressBnInput').value;
                 document.getElementById('addressEn').textContent = document.getElementById('addressEnInput').value;
+
+                // জন্মস্থান ডেটা এখানে শুধু ইনপুট থেকে নেওয়া হচ্ছে, কিন্তু বর্তমানে সার্টিফিকেট প্রিভিউতে আলাদাভাবে ডিসপ্লে করা হচ্ছে না।
+                const birthDistrictBn = document.getElementById('birthDistrictBnInput').value;
+                const birthDivisionBn = document.getElementById('birthDivisionBnInput').value;
+                const birthDistrictEn = document.getElementById('birthDistrictEnInput').value;
+                const birthDivisionEn = document.getElementById('birthDivisionEnInput').value;
+                
+                console.log(`জন্মস্থান (বাংলা): ${birthDistrictBn}, ${birthDivisionBn}`);
+                console.log(`Birth Place (English): ${birthDistrictEn}, ${birthDivisionEn}`);
             }
 
             // ফর্ম সাবমিট হ্যান্ডলার
@@ -350,5 +395,3 @@
     </script>
     </body>
 </html>
-
-
