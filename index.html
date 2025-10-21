@@ -25,13 +25,29 @@
             padding: 20px 0;
         }
 
+        /* ডিসক্লেমার স্টাইল */
+        .disclaimer {
+            width: 95%;
+            max-width: 1400px;
+            background-color: #ffebeb; /* হালকা গোলাপি ব্যাকগ্রাউন্ড */
+            border: 2px solid #e74c3c; /* লাল বর্ডার */
+            color: #c0392b; /* গাঢ় লাল টেক্সট */
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
         /* মূল কন্টেইনার */
         .app-container {
             display: flex;
             gap: 30px;
             width: 95%;
             max-width: 1400px;
-            margin: 20px auto;
+            margin: 0 auto;
         }
 
         /* ইনপুট ফর্ম (বাম পাশ) */
@@ -90,28 +106,37 @@
             position: absolute;
             font-family: 'Noto Sans Bengali', Arial, sans-serif;
             font-size: 8px; /* ফন্ট সাইজ টিউন করা হলো */
-            font-weight: 500;
+            font-weight: 400; /* পরিবর্তন: নরমাল ফন্ট ওয়েট */
             color: #000;
             white-space: nowrap;
             line-height: 1.5;
         }
         .overlay-text.en {
             font-family: Arial, sans-serif;
-            font-weight: bold;
+            font-weight: normal; /* পরিবর্তন: নরমাল ফন্ট ওয়েট */
             font-size: 9px; /* ইংরেজি ফন্ট সাইজ টিউন করা হলো */
             color: #000;
         }
         .union-text {
             font-size: 9px; 
-            font-weight: 600;
+            font-weight: 400; /* পরিবর্তন: নরমাল ফন্ট ওয়েট */
             letter-spacing: 0.5px;
             color: #000;
         }
         .reg-num-text {
             font-size: 9px; 
-            font-weight: 700;
+            font-weight: 400; /* পরিবর্তন: নরমাল ফন্ট ওয়েট */
             text-align: center;
             color: #000;
+        }
+        /* নতুন পরিবর্তন: ঠিকানার গ্রাম/ভিলেজ অংশের জন্য ছোট ফন্ট সাইজ */
+        .address-part {
+            font-size: 7.5px; /* গ্রাম টেক্সট সাইজ ছোটো */
+            font-weight: 400;
+        }
+        .address-part.en {
+            font-size: 8.5px; /* গ্রাম টেক্সট সাইজ ছোটো */
+            font-weight: normal;
         }
 
         /* **SHADOW JOKER সিগনেচার স্টাইল** */
@@ -135,7 +160,7 @@
         #regNumDisplay { top: 31.7%; left: 45.5%; width: 28%; text-align: center; }
         
         /* জন্ম তারিখ */
-        #dobDisplay { top: 32.5%; left: 30.5%; }
+        #dobDisplay { top: 35.5%; left: 30.5%; }
         #doiDisplay { top: 31.7%; left: 78%; }
 
         /* জন্ম তারিখ কথায় */
@@ -182,6 +207,10 @@
     </head>
 <body>
 
+    <div class="disclaimer">
+        ⚠️ **গুরুত্বপূর্ণ সতর্কতা:** এই টুলসটি তৈরি করা হয়েছে শুধুমাত্র **শিক্ষার উদ্দেশ্যে** এবং HTML/CSS/JS দক্ষতা প্রদর্শনের জন্য। এটি দিয়ে তৈরি কোনো ডকুমেন্ট **খারাপ কাজে** বা **প্রতারণার উদ্দেশ্যে** ব্যবহার করবেন না। এর অপব্যবহারের জন্য **SHADOW JOKER** কর্তৃপক্ষ দায়ী থাকবে না।
+    </div>
+    
     <div class="app-container">
         <div class="input-form-panel">
             <h2>প্রয়োজনীয় তথ্য ইনপুট</h2>
@@ -214,8 +243,8 @@
                 <div class="input-group"><label for="fatherNameEnInput">পিতার নাম (ইংরেজি):</label><input type="text" id="fatherNameEnInput" value="PRABHAT RANJAN ROY" required></div>
                 <div class="input-group"><label for="motherNameBnInput">মাতার নাম (বাংলা):</label><input type="text" id="motherNameBnInput" value="শোভা রাণী রায়" required></div>
                 <div class="input-group"><label for="motherNameEnInput">মাতার নাম (ইংরেজি):</label><input type="text" id="motherNameEnInput" value="SHOBHA RANI ROY" required></div>
-                <div class="input-group"><label for="addressBnInput">স্থায়ী ঠিকানা (বাংলা):</label><input type="text" id="addressBnInput" value="মোগরাহাট, কালীগঞ্জ, ঝিনাইদহ" required></div>
-                <div class="input-group"><label for="addressEnInput">স্থায়ী ঠিকানা (ইংরেজি):</label><input type="text" id="addressEnInput" value="Mograhat, Kaliganj, Jhenaidah" required></div>
+                <div class="input-group"><label for="addressBnInput">স্থায়ী ঠিকানা (বাংলা) [গ্রাম, থানা, জেলা]:</label><input type="text" id="addressBnInput" value="মোগরাহাট, কালীগঞ্জ, ঝিনাইদহ" required></div>
+                <div class="input-group"><label for="addressEnInput">স্থায়ী ঠিকানা (ইংরেজি) [Village, Thana, District]:</label><input type="text" id="addressEnInput" value="Mograhat, Kaliganj, Jhenaidah" required></div>
 
                 <div class="action-buttons"><button type="submit">সার্টিফিকেট আপডেট করুন</button></div>
             </form>
@@ -239,10 +268,7 @@
                 <div id="motherNameBn" class="overlay-text"></div>
                 <div id="motherNameEn" class="overlay-text en"></div>
 
-                <div id="addressBn" class="overlay-text"></div>
-                <div id="addressEn" class="overlay-text en"></div>
-
-                <div id="shadowJokerSignature" class="signature-credit">
+                <div id="addressBn" class="overlay-text address-part"></div> <div id="addressEn" class="overlay-text address-part en"></div> <div id="shadowJokerSignature" class="signature-credit">
                      SHADOW JOKER
                 </div>
             </div>
@@ -293,6 +319,10 @@
             
             // ডাউনলোড ফাংশন (html2canvas ব্যবহার করে)
             downloadBtn.addEventListener('click', function() {
+                // ডিসক্লেমার লুকানো
+                const disclaimer = document.querySelector('.disclaimer');
+                disclaimer.style.display = 'none';
+
                 downloadBtn.style.display = 'none'; 
                 
                 html2canvas(certificateCard, { 
@@ -307,7 +337,10 @@
                     link.href = image;
                     link.click();
                     
+                    // ডিসক্লেমার ও ডাউনলোড বাটন ফিরিয়ে আনা
                     downloadBtn.style.display = 'inline-block';
+                    disclaimer.style.display = 'block';
+
                 });
             });
 
@@ -317,6 +350,3 @@
     </script>
     </body>
 </html>
-
-
-
